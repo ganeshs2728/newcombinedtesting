@@ -1,4 +1,4 @@
-name: Testing and Merging Branch to main
+name: Testing2 and Merging Branch to main
 on: workflow_dispatch
 jobs:
   FrontEndTesting-job:

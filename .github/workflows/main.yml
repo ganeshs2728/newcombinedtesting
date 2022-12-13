@@ -34,5 +34,6 @@ jobs:
         run: |
           cd E2ETest
           npm install
+          cypress install
           ./node_modules/.bin/cypress run
           

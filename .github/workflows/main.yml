@@ -33,4 +33,5 @@ jobs:
       - name: run cypress tests 
         run: |
           cd E2ETest
-          npm test
+          node_modules/.bin/cypress run
+          

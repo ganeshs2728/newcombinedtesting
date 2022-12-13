@@ -33,7 +33,6 @@ jobs:
       - name: run cypress tests 
         run: |
           cd E2ETest
-          npm install
-          ./node_modules/.bin/cypress install --force
+          ./node_modules/.bin/cypress install 
           ./node_modules/.bin/cypress run
           

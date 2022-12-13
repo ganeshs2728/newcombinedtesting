@@ -1,0 +1,47 @@
+
+name: Testing4 here and Merging Branch to main
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - "testbranch_updated"
+jobs:
+  FrontEndTesting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: downloading repo
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          cd Testing
+          cd FrontEndTesting
+          npm install
+      - name: initating the testing
+        run: |
+          cd Testing
+          cd FrontEndTesting
+          npm test
+  BackEndTesting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: downloading repo
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: pip3 install pytest
+      - name: initating the testing
+        run: |
+          cd Testing
+          cd BackEndTesting
+          pytest test_*.py
+  EndToEndTesting-job:
+    needs: [FrontEndTesting-job,BackEndTesting-job]
+    runs-on: ubuntu-latest
+    steps:
+      - name: downloading repo
+        uses: actions/checkout@v3
+      - name: run cypress tests 
+        run: |
+          cd Testing
+          cd E2ETest
+          ./node_modules/.bin/cypress install 
+          ./node_modules/.bin/cypress run

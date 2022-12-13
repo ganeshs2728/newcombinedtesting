@@ -1,5 +1,9 @@
 name: Testing3 here and Merging Branch to main
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - "testbranch_updated"
 jobs:
   FrontEndTesting-job:
     runs-on: ubuntu-latest
